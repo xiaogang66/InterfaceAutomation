@@ -1,0 +1,201 @@
+2019-11-01 14:16:28,114 - RunMain - INFO - 执行用例：test_01-购物车-初始化购物车
+2019-11-01 14:16:28,136 - RunCase - INFO - 请求参数：None
+2019-11-01 14:16:28,191 - RunCase - INFO - 请求结果：{"errmsg":"","errno":0}
+2019-11-01 14:16:28,386 - RunMain - INFO - 执行用例：test_02-商品-添加商品
+2019-11-01 14:16:28,405 - RunCase - INFO - 请求参数：None
+2019-11-01 14:16:28,594 - RunCase - INFO - 请求结果：{"data":null,"errmsg":"","errno":0}
+2019-11-01 14:16:28,855 - RunMain - INFO - 执行用例：test_03-订单-下订单
+2019-11-01 14:16:28,874 - RunCase - INFO - 请求参数：None
+2019-11-01 14:16:29,162 - RunCase - INFO - 请求结果：{"data":{"genTime":1572588978,"orderId":"1210510386307","price":4900},"errmsg":"","errno":0}
+2019-11-01 14:16:29,471 - RunMain - INFO - 执行用例：test_04-支付-订单支付
+2019-11-01 14:16:29,536 - RunCase - INFO - 请求参数：{
+ "_platform_num": "100455",
+ "sign": "DA95285BFBC586744D4977975D44A9A3",
+ "dept_code": "0001",
+ "dept_name": "",
+ "bill_number": 1210510386307,
+ "cashier_code": "0014",
+ "cashier_name": "lyg",
+ "replacement_flag": 0,
+ "agio_money": 0.0,
+ "hand_rebate": 0.0,
+ "redPackFee": 0.0,
+ "old_bill_number": "",
+ "uid": "900000014",
+ "sub_mch_id": "020008",
+ "orderType": 6,
+ "orderSource": 10,
+ "paylist": [{
+  "payment_code": "0001",
+  "payment_name": "xianjin",
+  "interface_code": "0018",
+  "pay_money": 4900.0
+ }],
+ "creditcardPayList": []
+}
+2019-11-01 14:16:29,644 - RunCase - INFO - 请求结果：{"success":true,"code":"0","msg":"","content":{"result":null}}
+2019-11-01 14:16:29,817 - RunMain - INFO - ------>全部用例执行成功
+2019-11-01 14:17:45,914 - RunMain - INFO - 执行用例：test_01-购物车-初始化购物车
+2019-11-01 14:17:45,934 - RunCase - INFO - 请求URL：http://cloudpos.retailo2o.com/cartcloud/modify/initialise?renterid=100455&entityid=0001&posid=0016&uid=900000014&cashier=0013
+2019-11-01 14:17:45,934 - RunCase - INFO - 请求参数：None
+2019-11-01 14:17:45,989 - RunCase - INFO - 请求结果：{"errmsg":"","errno":0}
+2019-11-01 14:17:46,233 - RunMain - INFO - 执行用例：test_02-商品-添加商品
+2019-11-01 14:17:46,252 - RunCase - INFO - 请求URL：http://cloudpos.retailo2o.com/cartcloud/modify/additem?renterid=100455&entityid=0001&posid=0016&uid=900000014&goodscode=111150020&goodstype=1&trademanid=&trademanname=&batchinfo=
+2019-11-01 14:17:46,253 - RunCase - INFO - 请求参数：None
+2019-11-01 14:17:46,454 - RunCase - INFO - 请求结果：{"data":null,"errmsg":"","errno":0}
+2019-11-01 14:17:46,674 - RunMain - INFO - 执行用例：test_03-订单-下订单
+2019-11-01 14:17:46,694 - RunCase - INFO - 请求URL：http://cloudpos.retailo2o.com/omscloud/cloudpossubmit/CreateOrder4CloudPos?uid=900000014&entityid=0001&posid=0016&EmployeeID=0013&price=4900&cashierName=aaa&version=1&storeCode=0001&_platform_num=100455
+2019-11-01 14:17:46,694 - RunCase - INFO - 请求参数：None
+2019-11-01 14:17:46,955 - RunCase - INFO - 请求结果：{"data":{"genTime":1572589055,"orderId":"1210510386308","price":4900},"errmsg":"","errno":0}
+2019-11-01 14:17:47,179 - RunMain - INFO - 执行用例：test_04-支付-订单支付
+2019-11-01 14:17:47,246 - RunCase - INFO - 请求URL：http://cloudpos.retailo2o.com/bsmApp/api/pay/savePaymentDetail.do
+2019-11-01 14:17:47,246 - RunCase - INFO - 请求参数：{
+ "_platform_num": "100455",
+ "sign": "DA95285BFBC586744D4977975D44A9A3",
+ "dept_code": "0001",
+ "dept_name": "",
+ "bill_number": 1210510386308,
+ "cashier_code": "0014",
+ "cashier_name": "lyg",
+ "replacement_flag": 0,
+ "agio_money": 0.0,
+ "hand_rebate": 0.0,
+ "redPackFee": 0.0,
+ "old_bill_number": "",
+ "uid": "900000014",
+ "sub_mch_id": "020008",
+ "orderType": 6,
+ "orderSource": 10,
+ "paylist": [{
+  "payment_code": "0001",
+  "payment_name": "xianjin",
+  "interface_code": "0018",
+  "pay_money": 4900.0
+ }],
+ "creditcardPayList": []
+}
+2019-11-01 14:17:47,358 - RunCase - INFO - 请求结果：{"success":true,"code":"0","msg":"","content":{"result":null}}
+2019-11-01 14:17:47,510 - RunMain - INFO - ------>全部用例执行成功
+2019-11-01 14:19:20,263 - RunMain - INFO - 执行用例：test_01-购物车-初始化购物车
+2019-11-01 14:19:20,281 - RunCase - INFO - 请求URL：http://cloudpos.retailo2o.com/cartcloud/modify/initialise?renterid=100455&entityid=0001&posid=0016&uid=900000014&cashier=0013
+2019-11-01 14:19:20,282 - RunCase - INFO - 请求参数：None
+2019-11-01 14:19:20,341 - RunCase - INFO - 请求结果：{"errmsg":"","errno":0}
+2019-11-01 14:19:20,538 - RunMain - INFO - 执行用例：test_02-商品-添加商品
+2019-11-01 14:19:20,557 - RunCase - INFO - 请求URL：http://cloudpos.retailo2o.com/cartcloud/modify/additem?renterid=100455&entityid=0001&posid=0016&uid=900000014&goodscode=111150020&goodstype=1&trademanid=&trademanname=&batchinfo=
+2019-11-01 14:19:20,557 - RunCase - INFO - 请求参数：None
+2019-11-01 14:19:20,949 - RunCase - INFO - 请求结果：{"data":null,"errmsg":"","errno":0}
+2019-11-01 14:19:21,226 - RunMain - INFO - 执行用例：test_03-订单-下订单
+2019-11-01 14:19:21,245 - RunCase - INFO - 请求URL：http://cloudpos.retailo2o.com/omscloud/cloudpossubmit/CreateOrder4CloudPos?uid=900000014&entityid=0001&posid=0016&EmployeeID=0013&price=4900&cashierName=aaa&version=1&storeCode=0001&_platform_num=100455
+2019-11-01 14:19:21,245 - RunCase - INFO - 请求参数：None
+2019-11-01 14:19:21,497 - RunCase - INFO - 请求结果：{"data":{"genTime":1572589150,"orderId":"1210510386309","price":4900},"errmsg":"","errno":0}
+2019-11-01 14:19:21,744 - RunMain - INFO - 执行用例：test_04-支付-订单支付
+2019-11-01 14:19:21,806 - RunCase - INFO - 请求URL：http://cloudpos.retailo2o.com/bsmApp/api/pay/savePaymentDetail.do
+2019-11-01 14:19:21,806 - RunCase - INFO - 请求参数：{
+ "_platform_num": "100455",
+ "sign": "DA95285BFBC586744D4977975D44A9A3",
+ "dept_code": "0001",
+ "dept_name": "",
+ "bill_number": "1210510386309",
+ "cashier_code": "0014",
+ "cashier_name": "lyg",
+ "replacement_flag": 0,
+ "agio_money": 0.0,
+ "hand_rebate": 0.0,
+ "redPackFee": 0.0,
+ "old_bill_number": "",
+ "uid": "900000014",
+ "sub_mch_id": "020008",
+ "orderType": 6,
+ "orderSource": 10,
+ "paylist": [{
+  "payment_code": "0001",
+  "payment_name": "xianjin",
+  "interface_code": "0018",
+  "pay_money": 4900.0
+ }],
+ "creditcardPayList": []
+}
+2019-11-01 14:19:21,918 - RunCase - INFO - 请求结果：{"success":true,"code":"0","msg":"","content":{"result":null}}
+2019-11-01 14:19:22,074 - RunMain - INFO - ------>全部用例执行成功
+2019-11-01 14:25:33,603 - RunMain - INFO - 执行用例：test_01-购物车-初始化购物车
+2019-11-01 14:25:33,622 - RunCase - INFO - 请求URL：http://cloudpos.retailo2o.com/cartcloud/modify/initialise?renterid=100455&entityid=0001&posid=0016&uid=900000014&cashier=0013
+2019-11-01 14:25:33,622 - RunCase - INFO - 请求参数：None
+2019-11-01 14:25:33,677 - RunCase - INFO - 请求结果：{"errmsg":"","errno":0}
+2019-11-01 14:25:33,903 - RunMain - INFO - 执行用例：test_02-商品-添加商品
+2019-11-01 14:25:33,921 - RunCase - INFO - 请求URL：http://cloudpos.retailo2o.com/cartcloud/modify/additem?renterid=100455&entityid=0001&posid=0016&uid=900000014&goodscode=111150020&goodstype=1&trademanid=&trademanname=&batchinfo=
+2019-11-01 14:25:33,921 - RunCase - INFO - 请求参数：None
+2019-11-01 14:25:35,398 - RunCase - INFO - 请求结果：{"data":null,"errmsg":"","errno":0}
+2019-11-01 14:25:35,664 - RunMain - INFO - 执行用例：test_03-订单-下订单
+2019-11-01 14:25:35,682 - RunCase - INFO - 请求URL：http://cloudpos.retailo2o.com/omscloud/cloudpossubmit/CreateOrder4CloudPos?uid=900000014&entityid=0001&posid=0016&EmployeeID=0013&price=4900&cashierName=aaa&version=1&storeCode=0001&_platform_num=100455
+2019-11-01 14:25:35,682 - RunCase - INFO - 请求参数：None
+2019-11-01 14:25:35,991 - RunCase - INFO - 请求结果：{"data":{"genTime":1572589524,"orderId":"1210510386310","price":4900},"errmsg":"","errno":0}
+2019-11-01 14:25:36,324 - RunMain - INFO - 执行用例：test_04-支付-订单支付
+2019-11-01 14:25:36,389 - RunCase - INFO - 请求URL：http://cloudpos.retailo2o.com/bsmApp/api/pay/savePaymentDetail.do
+2019-11-01 14:25:36,389 - RunCase - INFO - 请求参数：{
+ "_platform_num": "100455",
+ "sign": "DA95285BFBC586744D4977975D44A9A3",
+ "dept_code": "0001",
+ "dept_name": "",
+ "bill_number": "1210510386310",
+ "cashier_code": "0014",
+ "cashier_name": "lyg",
+ "replacement_flag": 0,
+ "agio_money": 0.0,
+ "hand_rebate": 0.0,
+ "redPackFee": 0.0,
+ "old_bill_number": "",
+ "uid": "900000014",
+ "sub_mch_id": "020008",
+ "orderType": 6,
+ "orderSource": 10,
+ "paylist": [{
+  "payment_code": "0001",
+  "payment_name": "xianjin",
+  "interface_code": "0018",
+  "pay_money": 4900.0
+ }],
+ "creditcardPayList": []
+}
+2019-11-01 14:25:36,492 - RunCase - INFO - 请求结果：{"success":true,"code":"0","msg":"","content":{"result":null}}
+2019-11-01 14:25:36,641 - RunMain - INFO - ------>全部用例执行成功
+2019-11-01 14:27:14,280 - RunMain - INFO - 执行用例：test_01-购物车-初始化购物车
+2019-11-01 14:27:14,298 - RunCase - INFO - 请求URL：http://cloudpos.retailo2o.com/cartcloud/modify/initialise?renterid=100455&entityid=0001&posid=0016&uid=900000014&cashier=0013
+2019-11-01 14:27:14,299 - RunCase - INFO - 请求参数：None
+2019-11-01 14:27:14,354 - RunCase - INFO - 请求结果：{"errmsg":"","errno":0}
+2019-11-01 14:27:14,600 - RunMain - INFO - 执行用例：test_02-商品-添加商品
+2019-11-01 14:27:14,618 - RunCase - INFO - 请求URL：http://cloudpos.retailo2o.com/cartcloud/modify/additem?renterid=100455&entityid=0001&posid=0016&uid=900000014&goodscode=111150020&goodstype=1&trademanid=&trademanname=&batchinfo=
+2019-11-01 14:27:14,618 - RunCase - INFO - 请求参数：None
+2019-11-01 14:27:14,883 - RunCase - INFO - 请求结果：{"data":null,"errmsg":"","errno":0}
+2019-11-01 14:27:15,184 - RunMain - INFO - 执行用例：test_03-订单-下订单
+2019-11-01 14:27:15,205 - RunCase - INFO - 请求URL：http://cloudpos.retailo2o.com/omscloud/cloudpossubmit/CreateOrder4CloudPos?uid=900000014&entityid=0001&posid=0016&EmployeeID=0013&price=4900&cashierName=aaa&version=1&storeCode=0001&_platform_num=100455
+2019-11-01 14:27:15,205 - RunCase - INFO - 请求参数：None
+2019-11-01 14:27:15,461 - RunCase - INFO - 请求结果：{"data":{"genTime":1572589624,"orderId":"1210510386311","price":4900},"errmsg":"","errno":0}
+2019-11-01 14:27:15,718 - RunMain - INFO - 执行用例：test_04-支付-订单支付
+2019-11-01 14:27:15,782 - RunCase - INFO - 请求URL：http://cloudpos.retailo2o.com/bsmApp/api/pay/savePaymentDetail.do
+2019-11-01 14:27:15,782 - RunCase - INFO - 请求参数：{
+ "_platform_num": "100455",
+ "sign": "DA95285BFBC586744D4977975D44A9A3",
+ "dept_code": "0001",
+ "dept_name": "",
+ "bill_number": "1210510386311",
+ "cashier_code": "0014",
+ "cashier_name": "lyg",
+ "replacement_flag": 0,
+ "agio_money": 0.0,
+ "hand_rebate": 0.0,
+ "redPackFee": 0.0,
+ "old_bill_number": "",
+ "uid": "900000014",
+ "sub_mch_id": "020008",
+ "orderType": 6,
+ "orderSource": 10,
+ "paylist": [{
+  "payment_code": "0001",
+  "payment_name": "xianjin",
+  "interface_code": "0018",
+  "pay_money": 4900.0
+ }],
+ "creditcardPayList": []
+}
+2019-11-01 14:27:15,897 - RunCase - INFO - 请求结果：{"success":true,"code":"0","msg":"","content":{"result":null}}
+2019-11-01 14:27:16,069 - RunMain - INFO - ------>全部用例执行成功
