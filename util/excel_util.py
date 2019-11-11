@@ -1,3 +1,5 @@
+# _*_ coding: utf-8 _*_
+
 """
 excel处理类
 """
@@ -65,6 +67,16 @@ class ExcelUtil(object):
             cellvalue = self.sheet.cell(row=row, column=i).value
             rowdata.append(cellvalue)
         return rowdata
+
+    def get_data_by_col_no(self,col):
+        """获取整列的所有值，存入列号"""
+        self.load_excel()
+        rows = self.sheet.max_row
+        coldata = []
+        for i in range(1, rows + 1):
+            cellvalue = self.sheet.cell(row=i, column=col).value
+            coldata.append(cellvalue)
+        return coldata
 
     def get_row_no_by_cell_value(self,cell_value,col_no):
         """根据单元格值获取行号"""

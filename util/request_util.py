@@ -1,10 +1,11 @@
+# _*_ coding: utf-8 _*_
+
 """
 请求基础处理类
 """
 import requests
 
 class RequestUtil(object):
-
 
     def do_get(self,url,params='',headers={},cookies={}):
         """get请求处理"""

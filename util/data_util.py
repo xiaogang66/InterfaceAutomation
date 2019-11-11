@@ -1,3 +1,5 @@
+# _*_ coding: utf-8 _*_
+
 """
 数据处理类（数据格式转换、json解析）
 """
@@ -8,7 +10,7 @@ class DataUtil(object):
 
     def json_data_analysis(self,pattern,str_data):
         dict_data = json.loads(str_data)
-        json_exe=parse(pattern)
+        json_exe = parse(pattern)
         madle = json_exe.find(dict_data)
         result = [math.value for math in madle]
         if result is None or result == []:

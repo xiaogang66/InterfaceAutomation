@@ -1,4 +1,5 @@
 # _*_ coding: utf-8 _*_
+
 import logging
 import time
 from util.configparam_util import ConfigEngine
@@ -9,7 +10,6 @@ class Logger(object):
         log_name = ConfigEngine.get_param_default("logSetting","logDir")
         # 文件路径需要修改
         log_name = log_name+current_time+".log"
-        print(log_name)
         # 根据传入的类名获取当前类的日志对象
         self.logger = logging.getLogger(logger_class_name)
         # 设置日志格式
@@ -17,7 +17,7 @@ class Logger(object):
         # logger添加handler
         log_console = ConfigEngine.get_param_default("logSetting", "logConsole")
         if "file" in log_console:
-            fh = logging.FileHandler(log_name)
+            fh = logging.FileHandler(log_name,encoding='utf-8')
             fh.setLevel(logging.INFO)
             fh.setFormatter(formatter)
             self.logger.addHandler(fh)
