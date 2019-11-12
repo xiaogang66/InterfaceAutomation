@@ -18,12 +18,12 @@ class DataUtil(object):
         else :
             return result[0]
 
-    def str_to_json(self,strs):
+    def json_to_str(self,strs):
         """数据解析成格式化的json格式"""
         result = json.dumps(strs,ensure_ascii=False,sort_keyss=True,indent=2)
         return result
 
-    def json_to_str(self,jsons):
+    def str_to_json(self,jsons):
         """数据解析成格式化的json格式"""
         result = json.loads(jsons)
         return result

@@ -42,10 +42,14 @@ class RunCase(object):
         self.logger = Logger(self.__class__.__name__).get_logger_with_level()
         self.cookie_dict = {}
 
-    def run_case_by_row_no(self,row_no):
-        """根据行号执行单个用例"""
-        # 按行取数
-        row_data = self.excelUtil.get_data_by_row_no(row_no)
+    def run_case_by_data(self,data):
+        """根据数据执行单个用例，格式：{"1":[test_001,订单,下单,www.baidu.com,xx,xx,]}"""
+        row_no = 2
+        for key in data:
+            row_no = key
+            break
+        row_data = data.get(row_no)
+        self.logger.info("执行用例：%s-%s-%s" % (row_data[RunCase.CASE_ID-1], row_data[RunCase.MODULE_NAME-1], row_data[RunCase.CASE_NAME-1]))
 
         # 数据准备
         case_id = row_data[self.CASE_ID-1]
@@ -71,6 +75,8 @@ class RunCase(object):
                 if depend_cookie is not None:
                     if type(depend_cookie) == RequestsCookieJar:
                         cookies = depend_cookie
+                    elif depend_cookie== '':
+                        cookies = {}
                     else:
                         cookies = self.dataUtil.str_to_json(depend_cookie)
             request_param = row_data[self.REQUEST_PARAM-1]
@@ -105,6 +111,7 @@ class RunCase(object):
                 self.excelUtil.set_data_by_row_col_no(row_no, self.EXEC_RESLT, 'pass')
             else:
                 self.excelUtil.set_data_by_row_col_no(row_no, self.EXEC_RESLT, 'fail')
+            return result
 
     def data_depend(self,request_param):
         """处理数据依赖

@@ -29,6 +29,7 @@ class ExcelUtil(object):
         workbook.close()
 
     def load_excel(self):
+        """加载excel"""
         self.workbook = load_workbook(self.file_name)
         self.sheet = None
         if self.sheet_name is None:
@@ -90,3 +91,35 @@ class ExcelUtil(object):
             else:
                 continue
         return row_no
+
+    def get_all_dict_data(self):
+        """读取表格数据转换成字典的列表格式显示"""
+        keys = self.get_data_by_row_no(1)
+        rowNum = self.sheet.max_row  # 获取总行数
+        colNum = self.sheet.max_column  # 获取总列数
+        if rowNum < 1:
+            print("总行数小于 1")
+        else:
+            result = []
+            j = 2
+            for i in range(rowNum - 1):
+                s = {}
+                # 从第二行取对应 values 值
+                values = self.get_data_by_row_no(j)
+                for x in range(colNum):
+                    s[keys[x]] = values[x]
+                result.append(s)
+                j += 1
+        return result
+
+
+    def get_case_list(self):
+        """获取所有用例数据的列表，每个用例数据按{"行号":[用例数据]}存储"""
+        case_data_list = []
+        row_counts = self.sheet.max_row
+        for row_no in range(row_counts-1):
+            row_no = row_no + 2
+            case_list = self.get_data_by_row_no(row_no)
+            case_dict = {row_no:case_list}
+            case_data_list.append(case_dict)
+        return case_data_list

@@ -9,21 +9,35 @@ from util.log_util import Logger
 from util.excel_util import ExcelUtil
 from run_case import RunCase
 import re
+import ddt
+import unittest
+import os
+import time
+import HTMLTestRunner
 
-class RunMain(object):
+file_name = ConfigEngine.get_param_default("caseFileSetting", "caseFile")
+sheet_name = ConfigEngine.get_param_default("caseFileSetting", "sheetName")
+logger = Logger("RunMain").get_logger_with_level()
+runCase = RunCase(file_name, sheet_name)
+excelUtil = ExcelUtil(file_name, sheet_name)
+excelUtil.load_excel()
+data_list = excelUtil.get_case_list()
 
-    def __init__(self):
-        self.file_name = ConfigEngine.get_param_default("caseFileSetting","caseFile")
-        self.sheet_name = ConfigEngine.get_param_default("caseFileSetting", "sheetName")
-        self.logger = Logger(self.__class__.__name__).get_logger_with_level()
-        self.runCase = RunCase(self.file_name,self.sheet_name)
+@ddt.ddt
+class RunMain(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.file_name = file_name
+        cls.sheet_name = sheet_name
+        cls.logger = logger
+        cls.runCase = runCase
+        cls.excelUtil = excelUtil
 
-    def auto_case_exec(self):
-        excelUtil = ExcelUtil(self.file_name,self.sheet_name)
-        excelUtil.load_excel()
-        max_row = excelUtil.sheet.max_row
-		# 获取所有cookie列数据，判断是否存在用例依赖
-        cookies = excelUtil.get_data_by_col_no(self.runCase.COOKIES)
+    @ddt.data(*data_list)
+    def test_run_case(self,data):
+        self.excelUtil.load_excel()
+        # 获取所有cookie列数据，判断是否存在用例依赖
+        cookies = self.excelUtil.get_data_by_col_no(self.runCase.COOKIES)
         # 如果匹配${test_01}成功，则表示存在依赖
         pattern = '^\$\{(.[^\.]+)\}$'
         cookie_list = []
@@ -34,17 +48,17 @@ class RunMain(object):
             if match_result:
                 cookie_list.append(match_result.group(1))
         self.runCase.cookie_dict = dict.fromkeys(cookie_list,'')
-        row_no = 2
-        while row_no <= max_row:
-            case_id= excelUtil.get_data_by_row_col_no(row_no,self.runCase.CASE_ID)
-            module_name = excelUtil.get_data_by_row_col_no(row_no,self.runCase.MODULE_NAME)
-            case_name = excelUtil.get_data_by_row_col_no(row_no,self.runCase.CASE_NAME)
-            self.logger.info("执行用例：%s-%s-%s" % (case_id,module_name,case_name))
-            self.runCase.run_case_by_row_no(row_no)
-            row_no = row_no + 1
-        self.logger.info("------>全部用例执行成功")
+        result = self.runCase.run_case_by_data(data)
+        self.assertTrue(result)
 
 
 if __name__ == '__main__':
-    rm = RunMain()
-    rm.auto_case_exec()
+    # 设置报告名称
+    report_path = os.path.dirname(os.path.abspath('.')) + '/InterfaceAutomation/reports/'  # 设置报告路径
+    now = time.strftime("%Y-%m-%d-%H_%M_%S", time.localtime(time.time()))  # 获取当前时间
+    HtmlFile = report_path + now + "HTMLtemplate.html"
+    fp = open(HtmlFile, "wb")  # 二进制写文件流
+    # 构建suite
+    suite = unittest.TestLoader().loadTestsFromTestCase(RunMain)
+    runner = HTMLTestRunner.HTMLTestRunner(stream=fp, title=u"xx测试报告", description=u"用例测试情况")
+    runner.run(suite)
